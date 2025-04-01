@@ -4,10 +4,7 @@ const App = () => (
   <main className='relative min-h-screen w-screen overflow-x-hidden'>
     <Hero/>
 
-    <div className='pt-96'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, debitis dolor facilis impedit incidunt
-      itaque perferendis quidem soluta. Ab atque culpa, dolor in mollitia nisi odit perspiciatis repellat rerum
-      temporibus!
-    </div>
+    <section className='w-full min-h-screen z-0 bg-blue-300'/>
   </main>
 );
 
