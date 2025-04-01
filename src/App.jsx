@@ -1,9 +1,10 @@
-const App = () => (
-  <main>
-    <h1 className='text-5xl text-violet-300 font-bold font-zentry'>
-      Hello World
-    </h1>
+import Hero from "./components/Hero.jsx";
 
+const App = () => (
+  <main className='relative min-h-screen w-screen overflow-x-hidden'>
+    <Hero/>
+
+    <section className='w-full min-h-screen z-0 bg-blue-300'/>
   </main>
 );
 
