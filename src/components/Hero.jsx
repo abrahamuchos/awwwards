@@ -1,10 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
 import { TiLocationArrow } from "react-icons/ti";
 
 import Button from "./Button.jsx";
 
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const [isLoading, setIsLoading] = useState(/**@type {boolean}**/ true);
@@ -25,6 +27,15 @@ export default function Hero() {
   const handleVideoLoad = () => {
     setLoadedVideos(prev => prev + 1)
   }
+
+  /**
+   * Check that all video have loaded
+   */
+  useEffect(() => {
+    if(loadedVideos === totalVideos - 1){
+      setIsLoading(false);
+    }
+  }, [loadedVideos]);
 
   useGSAP(() => {
     if(hasClicked){
@@ -61,22 +72,35 @@ export default function Hero() {
       borderRadius: '0 0 0 0',
       ease: "power1.inOut",
       scrollTrigger: {
-        trigger: {
-          trigger: '#video-frame',
-          start: 'center center',
-          end: 'bottom center',
-          scrub: true,
-        }
-      }
+        trigger: "#video-frame",
+        start: "center center",
+        end: "bottom center",
+        scrub: true,
+      },
     });
   })
 
-
+  /**
+   * Get de video src by index
+   * @param {number} index
+   * @returns {string} - video path
+   */
   const getVideoSrc = (index) => `/videos/hero-${index}.mp4`
 
 
   return (
     <div className='relative h-dvh w-screen overflow-x-hidden'>
+      {isLoading &&(
+        <div className='flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50'>
+          <div className="three-body">
+            <div className="three-body__dot"></div>
+            <div className="three-body__dot"></div>
+            <div className="three-body__dot"></div>
+          </div>
+        </div>
+
+      )}
+
       <div id="video-frame" className='relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75'>
         <div className="mask-clip-path absolute-center z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
           <div onClick={handleMiniVideoClick} className='origin-center scale-50 opacity-0 transition-all ease-in
@@ -98,6 +122,7 @@ export default function Hero() {
           id='next-video'
           ref={nextVideoRef}
           src={getVideoSrc(currentIndex)}
+          onLoadedData={handleVideoLoad}
           className='absolute-center invisible z-20 size-64 object-cover object-center'
           loop
           muted
@@ -132,6 +157,7 @@ export default function Hero() {
         </div>
       </div>
 
+      {/*Repeat text for the effect animation when scroll (black color)*/}
       <h1 className='special-font hero-heading absolute bottom-5 right-5  text-black-100'>
         G<b>a</b>ming
       </h1>
