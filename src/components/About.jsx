@@ -1,12 +1,14 @@
+import React from "react";
 import gsap from 'gsap';
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
+import AnimatedTitle from "./AnimatedTitle.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
 
-  useGSAP(()=>{
+  useGSAP(() => {
     const clipAnimation = gsap.timeline({
       scrollTrigger: {
         trigger: '#clip',
@@ -29,12 +31,12 @@ export default function About() {
   return (
     <>
       <div id="about" className="w-screen min-h-screen">
-        <div className="relative mb-8 mt36 flex flex-col items-center gap5">
+        <div className="relative mb-8 mt-36 flex flex-col items-center gap5">
           <h2 className='font-general text-sm uppercase md:text-[10px]'>Welcome to Zentry</h2>
-          <div className="mt-5 text-center text-4xl uppercase leading-[0.8] md:text-[6rem]">
-            Disc<b>o</b>ver the world's <br/>
-            l<b>a</b>rgest shared adventure
-          </div>
+          <AnimatedTitle
+            className='mt-5 text-center text-4xl uppercase !text-black leading-[0.8] md:text-[6rem]'
+            title={"Disc<b>o</b>ver the world's <br/> l<b>a</b>rgest shared adventure"}
+          />
 
           <div className="about-subtext">
             <p>The Game of Game begins-your life, now an epic MMRPG </p>
