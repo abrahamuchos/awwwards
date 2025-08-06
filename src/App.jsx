@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
 import Features from "./components/Features.jsx";
+import Story from "./components/Story.jsx";
 
 const App = () => (
   <main className='relative min-h-screen w-screen overflow-x-hidden'>
@@ -9,6 +10,7 @@ const App = () => (
     <Hero/>
     <About/>
     <Features/>
+    <Story/>
     <section className='w-full min-h-screen z-0 bg-blue-300'/>
   </main>
 );
