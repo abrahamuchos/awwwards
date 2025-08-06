@@ -4,6 +4,7 @@ import About from "./components/About.jsx";
 import Features from "./components/Features.jsx";
 import Story from "./components/Story.jsx";
 import Contact from "./components/Contact.jsx";
+import Footer from "./components/Footer.jsx";
 
 const App = () => (
   <main className='relative min-h-screen w-screen overflow-x-hidden'>
@@ -13,7 +14,7 @@ const App = () => (
     <Features/>
     <Story/>
     <Contact/>
-    <section className='w-full min-h-screen z-0 bg-blue-300'/>
+    <Footer/>
   </main>
 );
 
