@@ -60,6 +60,7 @@ export default function Story() {
           the multiversal ip world
         </p>
 
+        {/*Title and Image*/}
         <div className="relative size-full">
           <AnimatedTitle
             title={"The st<b>o</b>ry of <br/> a hidden real<b>m</b>"}
@@ -84,6 +85,7 @@ export default function Story() {
             <RoundedCorners/>
           </div>
         </div>
+        {/*End Title and Image*/}
 
         {/*Info and CTA*/}
         <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
